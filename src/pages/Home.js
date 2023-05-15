@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import RecipeCard from "../Components/RecipeCard";
 
-export default function Home() {
+export default function Home({loggedIn}) {
   const [recipes, setRecipes] = useState(null);
 
   useEffect(() => {
@@ -23,13 +24,7 @@ export default function Home() {
   return (
     <div>
       {recipes?.hits.map(({ recipe }) => (
-        <div>
-          <h4>{recipe.label}</h4>
-          <Link to={recipe.url}>
-            <img src={recipe.image} alt="recipe.label" />
-          </Link>
-
-        </div>
+        <RecipeCard recipe={recipe} loggedIn={loggedIn}/>
       ))}
     </div>
   );
