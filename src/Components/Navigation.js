@@ -16,7 +16,7 @@ const Navigation = (props) => {
  }   
 
   return (
-    <AppBar position="relative" sx={{ backgroundColor: "green" }}>
+    <AppBar position="relative" className="navigation">
       <Toolbar>
         <IconButton color="inherit">
           <MenuIcon />
@@ -28,6 +28,12 @@ const Navigation = (props) => {
           <Link to="/home" style={{ marginRight: 20 }}>
             Home
           </Link>
+          {props.loggedIn && (
+          <Link to="/my-recipes" style={{ marginRight: 20 }}>
+            My Recipes
+          </Link>
+            
+          )}
             {props.loggedIn?(
                 <Link to="/" style={{marginRight: 20}} onClick={() => handleLogOut()}>LogOut</Link>           
                  ):(

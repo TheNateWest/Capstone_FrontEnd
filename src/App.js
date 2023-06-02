@@ -15,7 +15,7 @@ function App() {
     console.log('these are the current cookies:', cookies)
     if(cookies.token){
       setLoggedIn(true)
-      navigate('/home')
+      // navigate('/home')
     }
   },[navigate])
 
@@ -24,10 +24,10 @@ function App() {
   },[loggedIn])
 
   return (
-    <>
+    <main className='page-container'>
       <Navigation loggedIn = {loggedIn} setLoggedIn = {setLoggedIn}/>
       <Router loggedIn = {loggedIn} setLoggedIn = {setLoggedIn}/>
-    </>
+    </main>
   );
 }
 

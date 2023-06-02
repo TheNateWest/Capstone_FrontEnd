@@ -48,30 +48,34 @@ export default function CreateUser() {
           }}
         >
           <TextField
-            required
-            onChange={handleTextChange}
-            value={state.username}
-            name="username"
-            label="Username"
-            type="text"
-          />
+                 sx={{backgroundColor:'whitesmoke'}}
+                 required
+                 onChange={handleTextChange}
+                 value={state.username}
+                 name="username"
+                 label="Username"
+                 type="text"
+                 />
           <TextField
-            required
-            onChange={handleTextChange}
-            value={state.password}
-            name="password"
-            label="Password"
-            type="password"
-          />
+                 sx={{backgroundColor:'whitesmoke'}}
+                 required
+                 onChange={handleTextChange}
+                 value={state.password}
+                 name="password"
+                 label="Password"
+                 type="password"
+                 />
           <TextField
+            sx={{backgroundColor:'whitesmoke'}}
             required
             onChange={handleTextChange}
             value={state.email}
             name="email"
             label="Email"
             type="text"
-          />
+            />
           <TextField
+            sx={{backgroundColor:'whitesmoke'}}
             required
             onChange={handleTextChange}
             value={state.fullName}

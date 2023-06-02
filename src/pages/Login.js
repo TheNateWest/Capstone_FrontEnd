@@ -7,12 +7,19 @@ import axios from 'axios';
 const Login = (props) => {
   const navigate = useNavigate();
 
+  // const cookies = cookie.parse(document.cookie)
+  // if(cookies.token){
+  //   navigate("/home")
+  // }
+
+  const [error, setError] = useState(false)
   const [state, setState] = useState({
     username: "",
     password: "",
   });
 
   const handleTextChange = (e) => {
+    setError(false)
     const { name, value } = e.target;
     setState((prevState) => {
       return {
@@ -33,9 +40,22 @@ const Login = (props) => {
         document.cookie = cookie.serialize("loggedIn", "true", { maxAge: 30 });
         navigate("/home");
     })
+    .catch(err => {
+      console.log(err, 'in error')
+      if(Number(err.response.status) === 400){
+        console.log("Wrong Username or Password")
+        return setError(true)
+      }
+    })
 
   };
 
+  // useEffect(() => {
+  //   const cookies = cookie.parse(document.cookie)
+  //   if(cookies.token){
+  //     navigate("/home")
+  //   }
+  // }, [])
   return (
     <div className="App">
       <Container maxWidth="sm">
@@ -49,6 +69,7 @@ const Login = (props) => {
             marginTop: 40,
           }}
         >
+          {error && <p style={{color: "red"}}>Username or Password are incorrect</p>}
           <TextField
             required
             onChange={handleTextChange}
@@ -56,6 +77,7 @@ const Login = (props) => {
             name="username"
             label="Username"
             type="text"
+            sx={{backgroundColor:'whitesmoke'}}
           />
           <TextField
             required
@@ -64,6 +86,7 @@ const Login = (props) => {
             name="password"
             label="Password"
             type="password"
+            sx={{backgroundColor:'whitesmoke'}}
           />
           <Button
             type="submit"
